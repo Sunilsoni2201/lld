@@ -1,4 +1,3 @@
-import concurrent.futures
 import threading
 
 
@@ -12,7 +11,10 @@ class Singleton:
                 cls._instance = super().__new__(cls)
         return cls._instance
 
+    def __init__(self, val):
+        self.value = val
 
-def get_instance():
-    instance = Singleton()
-    print(f'Instance ID: {id(instance)}')
+
+def get_instance(value):
+    instance = Singleton(val=value)
+    print(f'Instance ID: {id(instance)}, value: {instance.value}')
